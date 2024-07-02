@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 from listings.models import (Band, Listing)
 
@@ -14,7 +15,8 @@ def band_list(request):
 
 
 def band_details(request,band_id):
-    band = Band.objects.get(id=band_id)
+    band = get_object_or_404(Band, pk=band_id)
+    #band = Band.objects.get(id=band_id)
     return render(request,
                   "listings/band_detail.html",
                   {"band": band})
@@ -39,3 +41,7 @@ def contactus(request):
                   {
                       "H1": "contactez-nous !",
                   })
+
+
+def page_not_found(request, exception):
+    return render(request, "listings/page_not_found.html", {"exeption": exception})
