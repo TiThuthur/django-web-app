@@ -1,8 +1,8 @@
 {% extends "listings/base.html" %}
 {% block content %}
-    <h1 class="center-title">Hello Django !</h1>
+    <h1 class="center-title">Groupes</h1>
     <div class="hello-box">
-    <p>Mes {{bands|length}} groupes du moments sont:</p>
+
     <ul>
         {%for band in bands%}
         <li>{{band.name}}</li>

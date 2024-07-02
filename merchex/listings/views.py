@@ -7,10 +7,17 @@ from listings.models import (Band, Listing)
 # Create your views here.
 
 
-def hello(request):
+def band_list(request):
     bands = Band.objects.all()
     return render(request, "listings/hello.html",
                   {"bands": bands})
+
+
+def band_details(request,band_id):
+    band = Band.objects.get(id=band_id)
+    return render(request,
+                  "listings/band_detail.html",
+                  {"band": band})
 
 
 def about(request):
