@@ -13,6 +13,13 @@ def band_list(request):
                   {"bands": bands})
 
 
+def band_details(request,band_id):
+    band = Band.objects.get(id=band_id)
+    return render(request,
+                  "listings/band_detail.html",
+                  {"band": band})
+
+
 def about(request):
     return render(request, "listings/about.html",
                   {
