@@ -26,6 +26,6 @@ urlpatterns = [
     path("listings/", views.listing),
     path("contact-us/", views.contactus),
 
-    path("404/", views.page_not_found),
+    path("not-found/", views.page_not_found),
 ]
 

@@ -1,0 +1,18 @@
+html{
+    background: rgb(26,33,48);
+    background: linear-gradient(180deg, rgba(26,33,48,1) 0%, rgba(90,114,160,1) 100%);
+    background-repeat: revert;
+    height: 100vh;
+    color: #FDFFE2;
+}
+.hello-box{
+    background: #83B4FF;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+.centrer-title{
+    text-align: center;
+}
+.blue-title{
+    color: #83B4FF;
+}
