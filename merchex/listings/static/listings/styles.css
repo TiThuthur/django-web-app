@@ -4,6 +4,7 @@ html{
     background-repeat: revert;
     height: 100vh;
     color: #FDFFE2;
+    font-family: "Segoe UI", system-ui, sans-serif;
 }
 .hello-box{
     background: #83B4FF;

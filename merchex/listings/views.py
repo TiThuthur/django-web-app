@@ -16,7 +16,6 @@ def band_list(request):
 
 def band_details(request, band_id):
     band = get_object_or_404(Band, pk=band_id)
-    #band = Band.objects.get(id=band_id)
     return render(request,
                   "listings/band_detail.html",
                   {"band": band})
@@ -31,10 +30,16 @@ def about(request):
 
 
 def listing(request):
-    listings = Listing.objects.all()
+    listing = Listing.objects.all()
     return render(request, "listings/listings.html",
-                  {"listings": listings})
+                  {"listing": listing})
 
+
+def listing_details(request, band_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    return  render(request,
+                   "listings/listings_detail.html",
+                   {"listing": listing})
 
 def contactus(request):
     return render(request, "listings/contact.html",
@@ -45,3 +50,4 @@ def contactus(request):
 
 def page_not_found(request, exception):
     return render(request, "listings/404.html", {"exception": exception}, status=404)
+
