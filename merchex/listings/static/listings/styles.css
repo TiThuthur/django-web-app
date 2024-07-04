@@ -1,19 +1,44 @@
 html{
-    background: rgb(26,33,48);
-    background: linear-gradient(180deg, rgba(26,33,48,1) 0%, rgba(90,114,160,1) 100%);
-    background-repeat: revert;
+    /*background: #1A2130;*/
+    background: #ffffff;
     height: 100vh;
-    color: #FDFFE2;
+    /*color: #FDFFE2;*/
+    color: #09090b;
     font-family: "Segoe UI", system-ui, sans-serif;
+    font-size: 20px;
 }
 .hello-box{
     background: #83B4FF;
     padding: 0.5em;
     border-radius: 0.5em;
 }
-.centrer-title{
+.center-title{
     text-align: center;
 }
 .blue-title{
-    color: #83B4FF;
+    color: #0F67B1;
+}
+.green-span{
+    color: #55AD9B;
+}
+.dark-span {
+    color:#5A72A0;
+}
+nav{
+    margin-top: 1em;
+}
+nav a{
+    background: #18181b;
+    border-radius: .2em;
+    padding: 0.5em;
+    margin: 0.5em;
+    text-decoration: none;
+    color:#ececec
+}
+dd{
+    text-align: justify;
+    max-width: 80vw;
+}
+.text-xl{
+    font-size: 3em;
 }

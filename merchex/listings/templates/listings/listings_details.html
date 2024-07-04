@@ -1,5 +1,15 @@
 {% extends "listings/base.html" %}
 {% block content %}
 
+    <h1 class="blue-title"> {{ listing.title }}</h1>
+    <blockquote>{{ listing.type }} de {{ listing.band }} parut en {{ listing.year }}</blockquote>
+    <dd>{{ listing.description }}</dd>
+    <p class="text-xl  center-title">{% if sold  %}
+        <span class="dark-text">Vendu</span>
+        {% else %}
+        <span class="green-span">En stock</span>
+        {% endif %}
+    </p>
 
+<a href="{% url 'listing_list' %}">Retour au listings</a>
 {% endblock %}

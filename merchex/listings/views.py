@@ -30,16 +30,17 @@ def about(request):
 
 
 def listing(request):
-    listing = Listing.objects.all()
+    listings = Listing.objects.all()
     return render(request, "listings/listings.html",
+                  {"listings": listings})
+
+
+def listing_details(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    return render(request,
+                  "listings/listings_details.html",
                   {"listing": listing})
 
-
-def listing_details(request, band_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
-    return  render(request,
-                   "listings/listings_detail.html",
-                   {"listing": listing})
 
 def contactus(request):
     return render(request, "listings/contact.html",
@@ -50,4 +51,3 @@ def contactus(request):
 
 def page_not_found(request, exception):
     return render(request, "listings/404.html", {"exception": exception}, status=404)
-
