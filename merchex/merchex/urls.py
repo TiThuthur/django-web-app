@@ -26,7 +26,7 @@ urlpatterns = [
     path("about-us/", views.about),
     path("listings/", views.listing, name="listing_list"),
     path("listings/<int:listing_id>/", views.listing_details, name="listing_details"),
-    path("contact-us/", views.contactus),
+    path("contact-us/", views.contact, name="contact"),
 
     path("not-found/", views.page_not_found),
 ]

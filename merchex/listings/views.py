@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
 from listings.models import (Band, Listing)
+from listings.forms import ContactUsForm
 
 
 # Create your views here.
@@ -42,11 +43,12 @@ def listing_details(request, listing_id):
                   {"listing": listing})
 
 
-def contactus(request):
+def contact(request):
+    print("La méthode de requête est : ", request.method)
+    print("Les données POST sont : ", request.POST)
+    form = ContactUsForm()
     return render(request, "listings/contact.html",
-                  {
-                      "H1": "contactez-nous !",
-                  })
+                  {"form": form})
 
 
 def page_not_found(request, exception):
