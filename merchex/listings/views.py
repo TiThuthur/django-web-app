@@ -44,9 +44,16 @@ def listing_details(request, listing_id):
 
 
 def contact(request):
-    print("La méthode de requête est : ", request.method)
-    print("Les données POST sont : ", request.POST)
-    form = ContactUsForm()
+    if request.method == "POST":
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            send_mail(subject=f"Message from {form.cleaned_data['name'] or "anonyme"} via MerchEx ContactUs form",
+                      message=form.cleaned_data['message'],
+                      from_email=form.cleaned_data["email"],
+                      recipient_list=[form.cleaned_data['email']],)
+    else:
+        form = ContactUsForm() #si c'est pas une request post alors c'est une request get
+
     return render(request, "listings/contact.html",
                   {"form": form})
 
