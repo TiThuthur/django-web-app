@@ -1,9 +1,9 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
+from django.core.mail import send_mail
 
 from listings.models import (Band, Listing)
-from listings.forms import ContactUsForm
+from listings.forms import ContactUsForm, BandForm
 
 
 # Create your views here.
@@ -23,7 +23,7 @@ def band_details(request, band_id):
 
 
 def about(request):
-    return render(request, "listings/about.html",
+    return render(request, "listings/about-us.html",
                   {
                       "H1": "A propos",
                       "message": "Nous adorons merch !"
@@ -47,12 +47,14 @@ def contact(request):
     if request.method == "POST":
         form = ContactUsForm(request.POST)
         if form.is_valid():
-            send_mail(subject=f"Message from {form.cleaned_data['name'] or "anonyme"} via MerchEx ContactUs form",
+            send_mail(subject=f"""Message from {form.cleaned_data['name'] or "anonyme"} via MerchEx ContactUs form""",
                       message=form.cleaned_data['message'],
                       from_email=form.cleaned_data["email"],
-                      recipient_list=[form.cleaned_data['email']],)
+                      recipient_list=["admin@merchex.xyz"], )
+        return redirect("email-sent")
     else:
-        form = ContactUsForm() #si c'est pas une request post alors c'est une request get
+        #si ce n'est pas une request post alors c'est une request get
+        form = ContactUsForm()
 
     return render(request, "listings/contact.html",
                   {"form": form})
@@ -60,3 +62,12 @@ def contact(request):
 
 def page_not_found(request, exception):
     return render(request, "listings/404.html", {"exception": exception}, status=404)
+
+
+def email_sent(request):
+    return render(request, "listings/email-sent.html", {"message": "votre message a bien été envoyé."})
+
+
+def band_create(request):
+    form = BandForm()
+    return render(request, "listings/band_create.html", {"form": form})

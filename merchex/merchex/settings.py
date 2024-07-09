@@ -116,7 +116,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = 'listings/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles/"
 
 STATICFILES_DIRS = [
@@ -128,3 +128,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'

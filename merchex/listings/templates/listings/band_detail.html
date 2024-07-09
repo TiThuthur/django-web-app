@@ -3,7 +3,7 @@
 {% block content %}
     <h2>{{ band.name }}</h2>
 
-<ul>
+<ul class="band-detail-list">
  <li>Genre : {{ band.get_genre_display }}</li>
  <li>Année de formation : {{ band.year_formed }}</li>
  <li>Actif : {{ band.active | yesno }}</li>

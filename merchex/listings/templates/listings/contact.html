@@ -2,9 +2,11 @@
 {% block content %}
     <p>Nous sommes là pour vous aider.</p>
     <form action="" method="post" novalidate>
+    <div class="form-grid">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer">
+    {{ form }}
+    </div>
+        <input type="submit" value="Envoyer">
     </form>
 
 
