@@ -1,7 +1,7 @@
 {% extends "listings/base.html" %}
 {% block content %}
     <h1 class="center-title text-xl">Groupes</h1>
-
+    <h2 class="center-title"> <a href="{% url 'band_create' %}">Créer un nouveau groupe</a></h2>
     <ul class="band-list">
         {%for band in bands%}
         <li class="band-list-item">

@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.core.mail import send_mail
 
 from listings.models import (Band, Listing)
-from listings.forms import ContactUsForm, BandForm
+from listings.forms import ContactUsForm, BandForm, ListingForm
 
 
 # Create your views here.
@@ -41,6 +41,17 @@ def listing_details(request, listing_id):
     return render(request,
                   "listings/listings_details.html",
                   {"listing": listing})
+
+
+def listing_create(request):
+    if request.method == "POST":
+        form = ListingForm(request.POST)
+        if form.is_valid():
+            listing=form.save()
+            return redirect("listing_details", listing.id)
+    else:
+         form = ListingForm()
+    return render(request,"listings/listings_create.html", {"form": form})
 
 
 def contact(request):
