@@ -83,7 +83,7 @@ dd{
 .band-detail-list li{
     margin-top: 1em;
 }
-.form-grid {
+.form-grid>div{
     display: grid;
     grid-template-columns: 100px 150px;
 }

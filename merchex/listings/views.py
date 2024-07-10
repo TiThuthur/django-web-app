@@ -15,7 +15,7 @@ def band_list(request):
                   {"bands": bands})
 
 
-def band_details(request, band_id):
+def band_detail(request, band_id):
     band = get_object_or_404(Band, pk=band_id)
     return render(request,
                   "listings/band_detail.html",
@@ -51,9 +51,9 @@ def contact(request):
                       message=form.cleaned_data['message'],
                       from_email=form.cleaned_data["email"],
                       recipient_list=["admin@merchex.xyz"], )
-        return redirect("email-sent")
+        return redirect("email_sent")
     else:
-        #si ce n'est pas une request post alors c'est une request get
+        #si ce n'est pas une request POST alors c'est une request GET
         form = ContactUsForm()
 
     return render(request, "listings/contact.html",
@@ -69,5 +69,11 @@ def email_sent(request):
 
 
 def band_create(request):
-    form = BandForm()
+    if request.method == "POST":
+        form = BandForm(request.POST)
+        if form.is_valid():
+            band = form.save()
+            return redirect("band_detail", band.id)
+    else:
+        form = BandForm()
     return render(request, "listings/band_create.html", {"form": form})

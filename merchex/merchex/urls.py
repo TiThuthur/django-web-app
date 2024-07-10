@@ -22,7 +22,7 @@ from listings import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("bands/",views.band_list, name="band_list"),
-    path("bands/<int:band_id>/", views.band_details, name="band_details"),
+    path("bands/<int:band_id>/", views.band_detail, name="band_detail"),
     path("bands/add/", views.band_create, name="band_create"),
     path("listings/", views.listing, name="listing_list"),
     path("listings/<int:listing_id>/", views.listing_details, name="listing_details"),
@@ -31,6 +31,6 @@ urlpatterns = [
 
     path("not-found/", views.page_not_found),
 
-    path("email-sent/", views.email_sent),
+    path("email-sent/", views.email_sent, name="email_sent"),
 ]
 

@@ -7,9 +7,9 @@
             <a href="{% url 'listing_details' listing.id %}">{{listing.title}}</a>
             <dt class="p-t--1em">
                 {% if listing.sold %}
-                    En stock
-                {% else %}
                     Hors stock
+                {% else %}
+                    En stock
                 {% endif %}
             </dt>
         </div>
