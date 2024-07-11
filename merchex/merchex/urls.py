@@ -24,9 +24,13 @@ urlpatterns = [
     path("bands/",views.band_list, name="band_list"),
     path("bands/<int:band_id>/", views.band_detail, name="band_detail"),
     path("bands/add/", views.band_create, name="band_create"),
+    path("bands/<int:band_id>/change/", views.band_change, name="band_change"),
+    path("bands/<int:band_id>/delete/", views.band_delete, name="band_delete"),
     path("listings/", views.listing, name="listing_list"),
     path("listings/<int:listing_id>/", views.listing_details, name="listing_details"),
     path("listings/add/", views.listing_create, name="listing_create"),
+    path("listings/<int:listing_id>/change/", views.listing_change, name="listing_change"),
+    path("listings/<int:listing_id>/delete/", views.listing_delete, name="listing_delete"),
     path("contact-us/", views.contact, name="contact"),
     path("about-us/", views.about, name="about_us"),
 

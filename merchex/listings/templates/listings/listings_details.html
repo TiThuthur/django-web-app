@@ -10,6 +10,7 @@
         <span class="green-span">En stock</span>
         {% endif %}
     </p>
-
+<a href="{% url 'listing_change' listing.id %}">Modifier l'annonce</a>
 <a href="{% url 'listing_list' %}">Retour au listings</a>
+    <a href="{% url 'listing_delete' listing.id %}" class="link-delete">Supprimer</a>
 {% endblock %}

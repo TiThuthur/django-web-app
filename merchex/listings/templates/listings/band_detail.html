@@ -15,9 +15,12 @@
     <h2 class="center-title">Les articles en rapport avec ce groupe</h2>
     <ul>
     {% for listing in band.listing_set.all %}
-        <li><a href="{% url 'listing_details' listing.id%}"> {{ listing.title }}</a></li>
+        <li><a href="{% url 'listing_details' listing.id%}" class="listing-detail"> {{ listing.title }}</a></li>
     {% endfor %}
     </ul>
 
+    <a href="{% url 'band_change' band.id%}">Modifier le groupe</a>
+
     <a href="{% url "band_list" %}">Retour à tous les groupes</a>
+    <a href="{% url 'band_delete' band.id %}" class="link-delete">Supprimer</a>
 {% endblock %}

@@ -1,10 +1,9 @@
 {% extends "listings/base.html" %}
 {% block content %}
-	<h1>Ajout d'une nouvelle annonce</h1>
+	<h1>Modification d'une annonce</h1>
     <form action="" method="post">
-
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer" class="button">
+    {{ form }}
+    <input type="submit" value="Modifier" class="button">
     </form>
 {% endblock %}

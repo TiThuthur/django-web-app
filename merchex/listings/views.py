@@ -22,6 +22,38 @@ def band_detail(request, band_id):
                   {"band": band})
 
 
+def band_create(request):
+    if request.method == "POST":
+        form = BandForm(request.POST)
+        if form.is_valid():
+            band = form.save()
+            return redirect("band_detail", band.id)
+    else:
+        form = BandForm()
+    return render(request, "listings/band_create.html", {"form": form})
+
+
+def band_change(request, band_id):
+    band = get_object_or_404(Band, pk=band_id)
+    if request.method == "POST":
+        form = BandForm(request.POST, instance=band)
+        if form.is_valid():
+            form.save()
+            return redirect("band_detail", band.id)
+    else:
+        form = BandForm(instance=band)
+    return render(request, "listings/band_change.html", {"form": form})
+
+
+def band_delete(request, band_id):
+    band = get_object_or_404(Band, pk=band_id)
+
+    if request.method == "POST":
+        band.delete()
+        return redirect("band_list")
+    return render(request, "listings/band_delete.html", {"band": band})
+
+
 def about(request):
     return render(request, "listings/about-us.html",
                   {
@@ -47,11 +79,32 @@ def listing_create(request):
     if request.method == "POST":
         form = ListingForm(request.POST)
         if form.is_valid():
-            listing=form.save()
+            listing = form.save()
             return redirect("listing_details", listing.id)
     else:
-         form = ListingForm()
-    return render(request,"listings/listings_create.html", {"form": form})
+        form = ListingForm()
+    return render(request, "listings/listings_create.html", {"form": form})
+
+
+def listing_change(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    if request.method == "POST":
+        form = ListingForm(request.POST, instance=listing)
+        if form.is_valid:
+            form.save()
+        return redirect("listing_details", listing_id)
+    else:
+        form = ListingForm(instance=listing)
+        return render(request, "listings/listings_change.html", {"form": form})
+
+
+def listing_delete(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    if request.method == "POST":
+        listing.delete()
+        return redirect("listing_list")
+
+    return render(request, "listings/listings_delete.html", {"listing": listing})
 
 
 def contact(request):
@@ -77,14 +130,3 @@ def page_not_found(request, exception):
 
 def email_sent(request):
     return render(request, "listings/email-sent.html", {"message": "votre message a bien été envoyé."})
-
-
-def band_create(request):
-    if request.method == "POST":
-        form = BandForm(request.POST)
-        if form.is_valid():
-            band = form.save()
-            return redirect("band_detail", band.id)
-    else:
-        form = BandForm()
-    return render(request, "listings/band_create.html", {"form": form})

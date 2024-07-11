@@ -1,10 +1,12 @@
 {% extends "listings/base.html" %}
 {%block content%}
-    <h1>Nos articles</h1>
+    <h1>Nos annonces</h1>
+    <h2 class="center-title"><a href="{% url 'listing_create' %}">Création d'une annonce</a></h2>
     <ul class="listing-list">
     {% for listing in listings %}
         <li> <div class="listing-card">
             <a href="{% url 'listing_details' listing.id %}">{{listing.title}}</a>
+            <a href="{% url 'listing_change' listing.id %}" class="link-change">[modifier]</a>
             <dt class="p-t--1em">
                 {% if listing.sold %}
                     Hors stock
@@ -12,6 +14,7 @@
                     En stock
                 {% endif %}
             </dt>
+            <a href="{% url 'listing_delete' listing.id %}" class="link-delete">Supprimer</a>
         </div>
         </li>
     {% endfor %}

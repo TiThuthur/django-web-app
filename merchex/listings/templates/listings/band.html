@@ -5,7 +5,10 @@
     <ul class="band-list">
         {%for band in bands%}
         <li class="band-list-item">
+            <div class="flex column justify-between item-center h-6">
                 <a href="{% url 'band_detail' band.id %}" class="band-list-link text-l">{{band.name}}</a>
+                <a href="{% url 'band_change' band.id %}" class="link-change">[modifier]</a>
+            </div>
         </li>
         {% endfor %}
     </ul>
